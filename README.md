@@ -33,15 +33,16 @@ Basically, there are three characteristics.
 
 We introduce a rectangle which can be placed by the adversary anywhere in the image. Then the attacker can furthermore introduce l_infty noise inside the rectangle with epsilon = 255.
 
+#### How to determine the Location of this rectangle
+
+1. Exhaustive Searching : Adding a grey rectangular sticker to image, considering all possible locations and choosing the worst-case attack
+2. Gradient Based Searching : Computing the magnitude of the gradient w.r.t each pixel, considering all possible locations and choosing C locations with largest magnitude. Exhaustively searching among these C locations.
+
 #### Examples 
 
 <img src="Figure/ROA.png" height="130" width="860">
 
 
-#### How to determine the Location of this rectangle
-
-1. Exhaustive Searching : Adding a grey rectangular sticker to image, considering all possible locations and choosing the worst-case attack
-2. Gradient Based Searching : Computing the magnitude of the gradient w.r.t each pixel, considering all possible locations and choosing C locations with largest magnitude. Exhaustively searching among these C locations.
 
 
 
