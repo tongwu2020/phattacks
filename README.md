@@ -42,7 +42,9 @@ We introduce a rectangle which can be placed by the adversary anywhere in the im
 
 <img src="Figure/ROA.png" height="130" width="860">
 
-
+Examples of the ROA attack on face recognition, using a rectangle of size 100 × 50. 
+(a) Left three images. Left: the original A. J. Buckley’s image. Middle: modified input image (ROA superimposed on the face). Right: an image of the predicted individual who is Aaron Tveit with the adversarial input in the middle image. 
+(b) Right three images. Left: the original Abigail Spencer’s image. Middle: modified input image (ROA superimposed on the face). Right: an image of the predicted individual who is Aaron Yoo with the adversarial input in the middle image.
 
 
 
