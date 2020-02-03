@@ -2,7 +2,6 @@
 
 ### [Tong Wu](https://tongwu2020.github.io/tongwu/), [Liang Tong](https://liang-tong.me), [Yevgeniy Vorobeychik](http://vorobeychik.com)
 
-#### Department of Computer Science and Engineering,
 #### Washington University in St. Louis
  
 ### Paper 
