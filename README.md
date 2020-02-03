@@ -29,13 +29,15 @@ Basically, there are three characteristics.
 2. the attack has low suspiciousness; this is operationalized by modifying only a small part of the object, with the modification similar to common “noise” that obtains in the real world;
 3. the attack causes misclassification by state-of-the-art deep neural network
 
-## Failure of Robust Learning & Randomized Smoothing against Physically Realizable Attacks
+## Abstract Attack Model: Rectangular Occlusion Attacks (ROA)
 
+This rectangle can be placed by the adversary anywhere in the image.
+Attacker can furthermore introduce l_infty noise inside the rectangle with epsilon = 255.
+This attack is untargeted attack
 
-<img src="Figure/OldDefense.png" height="307" width="860">
-
-
-
+## Determine the Location
+1. Exhaustive Searching : Adding a grey rectangular sticker to image, considering all possible locations and choosing the worst-case attack
+2. Gradient Based Searching : Computing the magnitude of the gradient w.r.t each pixel, considering all possible locations and choosing C locations with largest magnitude. Exhaustively searching among these C locations.
 
 
 
