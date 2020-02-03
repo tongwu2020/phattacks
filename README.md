@@ -11,22 +11,35 @@ We study the problem of defending deep neural network approaches for image class
 
 
 ## Usage
-1. 
+1. Clone this repository: 
 ```
-Clone this repository: git clone https://github.com/tongwu2020/phattacks.git
+git clone https://github.com/tongwu2020/phattacks.git
 ```
 
-## Album Geolocation
+2. Install the dependencies:
+```
+conda create -n phattack
+conda activate phattack
+# Install following packages:
+# See https://pytorch.org/ for the correct command for your system to install correct version of Pytorch 
+conda install scipy pandas statsmodels matplotlib seaborn numpy 
+conda install -c conda-forge opencv
+# May need more packages 
+```
 
-We provide the images features, therefore users who don't have GPUs can apply our approach directly. You need to get the score matrices for our synthetic image albums. 
+3. Download our trained models from:
+
+4. Run specific task:
+
 ```
-  python albums_fea/feaGet.py -m 1 -s 16
+cd glass 
 ```
+or 
+
 ```
-  "-m": model number which could be 1 or 2. 
-  "-s": album size which could be 16, 32, 64 or 128.
+cd sign
 ```
-*Note: make sure you have run **all** the combinations of the parameter choices.* 
+
 
 
 
