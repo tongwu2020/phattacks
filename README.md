@@ -13,9 +13,7 @@ We study the problem of defending deep neural network approaches for image class
 
 ##  Motivation
 
-A large literature has emerged on defending deep neural networks against adversarial examples on the feature space, namely l_2, l_infty etc.
-
-However,there seem no effective methods specifically to defend against physically realizable attacks (major concern in real life).
+A large literature has emerged on defending deep neural networks against adversarial examples on the feature space, namely l_2, l_infty etc. However,there seems no effective methods specifically to defend against physically realizable attacks (major concern in real life).
  
 
 ## What is Physically Realizable Attack?
@@ -30,6 +28,15 @@ Basically, there are three characteristics.
 1. The attack can be implemented in the physical space (e.g., modifying the stop sign);
 2. the attack has low suspiciousness; this is operationalized by modifying only a small part of the object, with the modification similar to common “noise” that obtains in the real world;
 3. the attack causes misclassification by state-of-the-art deep neural network
+
+## Failure of Robust Learning & Randomized Smoothing against Physically Realizable Attacks
+
+
+<img src="Figure/OldDefense.png" height="307" width="860">
+
+
+
+
 
 
 ## Prepare for the experiment 
