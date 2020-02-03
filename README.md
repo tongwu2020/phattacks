@@ -1,8 +1,8 @@
 # Defending Against Physically Realizable Attacks on Image Classification
 
-### [Tong Wu](https://tongwu2020.github.io/tongwu/), [Liang Tong](https://liang-tong.me), Yevgeniy Vorobeychik(http://vorobeychik.com)
+### [Tong Wu](https://tongwu2020.github.io/tongwu/), [Liang Tong](https://liang-tong.me), [Yevgeniy Vorobeychik](http://vorobeychik.com)
 
-#### [Department of Computer Science and Engineering](https://cse.wustl.edu/Pages/default.aspx)
+#### Department of Computer Science and Engineering,
 #### Washington University in St. Louis
  
 
