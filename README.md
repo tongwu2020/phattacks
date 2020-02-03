@@ -33,6 +33,10 @@ Basically, there are three characteristics.
 
 We introduce a rectangle which can be placed by the adversary anywhere in the image. Then the attacker can furthermore introduce l_infty noise inside the rectangle with epsilon = 255.
 
+#### Examples 
+
+<img src="Figure/ROA.png" height="130" width="860">
+
 
 #### How to determine the Location of this rectangle
 
