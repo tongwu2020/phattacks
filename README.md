@@ -20,9 +20,9 @@ A large literature has emerged on defending deep neural networks against adversa
 
 <img src="Figure/phattack.png" height="130" width="860">
 
-Left three images are an example of the eyeglass frame attack. Left: original face input image. Middle: modified input image (adversarial eyeglasses superimposed on the face). Right: an image of the predicted individual with the adversarial input in the middle image. 
+(a)Left three images are an example of the eyeglass frame attack. Left: original face input image. Middle: modified input image (adversarial eyeglasses superimposed on the face). Right: an image of the predicted individual with the adversarial input in the middle image. 
 
-Right three images are an example of the stop sign attack. Left: original stop sign input image. Middle: adversarial mask. Right: stop sign image with adversarial stickers, classified as a speed limit sign.
+(b)Right three images are an example of the stop sign attack. Left: original stop sign input image. Middle: adversarial mask. Right: stop sign image with adversarial stickers, classified as a speed limit sign.
 
 Basically, there are three characteristics.  
 1. The attack can be implemented in the physical space (e.g., modifying the stop sign);
@@ -43,8 +43,18 @@ We introduce a rectangle which can be placed by the adversary anywhere in the im
 <img src="Figure/ROA.png" height="130" width="860">
 
 Examples of the ROA attack on face recognition, using a rectangle of size 100 × 50. 
+
 (a) Left three images. Left: the original A. J. Buckley’s image. Middle: modified input image (ROA superimposed on the face). Right: an image of the predicted individual who is Aaron Tveit with the adversarial input in the middle image. 
+
 (b) Right three images. Left: the original Abigail Spencer’s image. Middle: modified input image (ROA superimposed on the face). Right: an image of the predicted individual who is Aaron Yoo with the adversarial input in the middle image.
+
+## Defense against Occlusion Attacks (DOA) & Results 
+
+We apply the adversarial training approach for ROA to fine tune the clean model. 
+
+
+
+
 
 
 
@@ -68,6 +78,7 @@ conda install -c conda-forge opencv
 3. Download our trained models from:
 
 4. Run specific task:
+For 
 
 ```
 cd glass 
