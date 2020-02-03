@@ -1,12 +1,17 @@
+
+'''
+The attack is learned from 15 images, each classes have 1 images.
+Type 'python smooth_patch.py {}.pt -sigma 1 '  to run 
+{} is the name of your model want to attack.
+1 is the sigma of randomized smoothing 
+'''
 import argparse
 import os
 import random
 import numpy as np
 from core import Smooth
 from time import time
-import argparse
-import os
-import random
+
 
 import torch
 import torch.nn as nn
@@ -22,8 +27,8 @@ from torch.utils.data.sampler import SubsetRandomSampler
 
 from make_patch_utils import *
 from train_model import Net
-from save_image import save_image 
-
+#from save_image import save_image 
+#uncomment to see images
 
 
 def train(epoch, patch, patch_shape):
@@ -40,6 +45,7 @@ def train(epoch, patch, patch_shape):
             labels = labels.cuda()
         data, labels = Variable(data), Variable(labels)
         #save_image('sourceimg11',data.data)
+        #uncomment to see images
 
         prediction = netClassifier(data)
  
@@ -68,10 +74,8 @@ def train(epoch, patch, patch_shape):
         if torch.cuda.is_available:
             patch, mask = patch.cuda(), mask.cuda()
         patch, mask = Variable(patch), Variable(mask)
-        save_image('advpatch1',patch.data)
         adv_x, mask, patch = attack(data, patch, mask)
-        save_image('advpatch2',patch.data)
-        save_image('advdata',data.data)
+
         
         adv_label = netClassifier(adv_x).data.max(1)[1][0]
         ori_label = labels.data[0]
@@ -80,20 +84,14 @@ def train(epoch, patch, patch_shape):
             success += 1
       
             if plot_all == 1: 
-                # plot source image
-                #vutils.save_image(data.data, "./%s/%d_%d_original.png" %(opt.outf, batch_idx, ori_label), normalize=True)
-                save_image('sourceimg',data.data)
-                
-                
-                # plot adversarial image
-                #vutils.save_image(adv_x.data, "./%s/%d_%d_adversarial.png" %(opt.outf, batch_idx, adv_label), normalize=True)
-                save_image('advimg',adv_x.data)
-                
+                pass
+
                 
         masked_patch = torch.mul(mask, patch)
         patch = masked_patch.data.cpu().numpy()
         new_patch = np.zeros(patch_shape)
-        save_image('advpatch',masked_patch.data)
+        # save_image('advpatch',masked_patch.data)
+        # uncomment to see images 
     
     
         if submatrix(patch[0][0]).shape != new_patch[0][0].shape:
@@ -153,7 +151,6 @@ def test(epoch, patch, patch_shape):
         adv_x = torch.mul((1-mask),data) + torch.mul(mask,patch)
         adv_x = torch.clamp(adv_x, min_out, max_out)
         
-        #adv_label = netClassifier(adv_x).data.max(1)[1][0]
         ori_label = labels.data[0]
         
         if epoch == opt.epochs:
@@ -163,9 +160,6 @@ def test(epoch, patch, patch_shape):
             #print(total)
             if total % 100 == 0:
                 print(cor/total*100)
-            
-            # log the prediction and whether it was correct
-            #print("{}\t{}\t{}\t{}\t{}".format(labels, prediction, cor, time_elapsed), file=f, flush=True)
         masked_patch = torch.mul(mask, patch)
         patch = masked_patch.data.cpu().numpy()
         new_patch = np.zeros(patch_shape)
@@ -177,7 +171,7 @@ def test(epoch, patch, patch_shape):
         
 
 
-    print("final acc", cor/total*100)
+    print("The final accuracy is ", cor/total*100)
 
         # log to file  
         # progress_bar(batch_idx, len(test_loader), "Test Success: {:.3f}".format(success/total))
@@ -214,10 +208,7 @@ def attack(x, patch, mask):
  
         out = F.softmax(netClassifier(adv_x), dim=1)
         target_prob = out.data[0][target]
-        #y_argmax_prob = out.data.max(1)[0][0]
-        
-        #print(count, conf_target, target_prob, y_argmax_prob)  
-        save_image('adv_x11',adv_x.data)
+ 
 
         if count >= opt.max_count:
             break
@@ -230,7 +221,7 @@ if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
     parser.add_argument("model", type=str, help="test_model")
-    parser.add_argument("sigma", type=float, help="noise hyperparameter")
+    parser.add_argument("-sigma", type=float, help="noise hyperparameter")
     parser.add_argument('--workers', type=int, help='number of data loading workers', default=1)
     parser.add_argument('--epochs', type=int, default=5, help='number of epochs to train for')
 

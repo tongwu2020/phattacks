@@ -5,7 +5,7 @@
 We use this file to train the clean model to classify the images.
 We do not tune a lot of hyperparmeters, all default hyperparameters showed below.
 We obtain more than 98% of accuracy
-type 'python origin_train', note that we do not provide the VGG_FACE.t7, but you can download the model through  
+type 'python origin_train.py', note that we do not provide the VGG_FACE.t7, but you can download the model through  
 http://www.robots.ox.ac.uk/~vgg/software/vgg_face/src/vgg_face_torch.tar.gz move it to glass/experiment file
 '''
 

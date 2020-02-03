@@ -1,18 +1,4 @@
-import torch
-import torch.nn as nn
-import torch.optim as optim
-import torch.nn.functional as F
-import numpy as np
-import os
-import copy
-import cv2
-import torch.nn.functional as F
-import argparse
-from time import time
-import datetime
-from save_image import save_image 
-from train_model import data_process_lisa
-from train_model import Net
+# This file basically runs Rectangular Occlusion Attacks (ROA) see paper 
 
 import torch
 import torch.nn as nn
@@ -27,11 +13,29 @@ class ROA(object):
     Make sticker 
     '''
 
-    def __init__(self, base_classifier: torch.nn.Module, size):
+    def __init__(self, base_classifier, size):
         self.base_classifier = base_classifier
         self.img_size = size 
+        """
+        (Important:the images have to be in  [0.0, 1.0] range, make sure adjust your model to take this images)
+        :param base_classifier: maps from [batch x channel x height x width] to [batch x num_classes]
+        :param size: the image size 
+        """
 
     def exhaustive_search(self, X, y, alpha, num_iter, width, height, xskip, yskip,random = False):
+        """
+        :param X: images from the pytorch dataloaders (Important:the images have to be in  [0.0, 1.0] range
+                  make sure adjust your model to take this images)
+        :param y: labels from the pytorch dataloaders
+        :param alpha: the learning rate of inside PGD attacks 
+        :param num_iter: the number of iterations of inside PGD attacks 
+        :param width: the width of ROA 
+        :param height: the height of ROA 
+        :param xskip: the skip (stride) when searching in x axis 
+        :param yskip: the skip (stride) when searching in y axis 
+        :param random: the initialization the ROA before inside PGD attacks, 
+                       True is random initialization, False is 0.5 initialization
+        """
         
         with torch.set_grad_enabled(False):
     
@@ -84,6 +88,19 @@ class ROA(object):
 
 
     def gradient_based_search(self, X, y, alpha, num_iter, width, height, xskip, yskip, potential_nums,random = False):
+        """
+        :param X: images from the pytorch dataloaders (Important:the images have to be in  [0.0, 1.0] range)
+                  make sure adjust your model to take this images
+        :param y: labels from the pytorch dataloaders
+        :param alpha: the learning rate of inside PGD attacks 
+        :param num_iter: the number of iterations of inside PGD attacks 
+        :param width: the width of ROA 
+        :param height: the height of ROA 
+        :param xskip: the skip (stride) when searching in x axis 
+        :param yskip: the skip (stride) when searching in y axis 
+        :param random: the initialization the ROA before inside PGD attacks, 
+                       True is random initialization, False is 0.5 initialization
+        """
 
         model = self.base_classifier
         size = self.img_size
@@ -120,7 +137,6 @@ class ROA(object):
             for j in range(ytimes):
                 num = gradient[:,:,yskip*j:(yskip*j+height),xskip*i:(xskip*i+width)]
                 loss = torch.sum(torch.sum(torch.sum(torch.mul(num,num),1),1),1)
-                #print(j*xtimes+i)
                 matrix[:,j*xtimes+i] = loss
         topk_values, topk_indices = torch.topk(matrix,nums)
         output_j1 = topk_indices//xtimes
@@ -174,76 +190,8 @@ class ROA(object):
             X1.data = (X1.detach() + alpha*X1.grad.detach().sign()*sticker)
             X1.data = (X1.detach() ).clamp(0,1)
             X1.grad.zero_()
-        save_image("stickerpgd",(X1).detach())
         return (X1).detach()
 
         
-        
-        
-
-def run(model, stride, width, height, dataloaders):
-
-    count = 0
-    total = 0
-    
-    for images,labels in dataloaders["val"]:
-        with torch.set_grad_enabled(True):
-            save_image('uattack'+str(labels),images.data)
-            
-            total +=  (labels == labels).sum().item()
-            ROA_module = ROA(model,32)
-            before_time = time()
-            
-            #images = ROA_module.gradient_based_search(images, labels, 0.1, 5, width, height,stride,stride, 10)
-            images = ROA_module.exhaustive_search(images, labels, 0.1, 5, width, height,stride,stride)
-            
-            save_image('attack'+str(labels),images.data)
-            
-            outputs = model(images)
-            kk, predicted = torch.max(outputs.data, 1)
-            device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-            labels = labels.to(device)
-            count += (predicted == labels).sum().item()
-            
-        
-            after_time = time()
-            time_elapsed = str(datetime.timedelta(seconds=(after_time - before_time)))
-
-            print("acc is ", round(count/total,4),"all is ",total)
-            print("{}\t{}\t{}".format(round(count/total,4), total, time_elapsed))
-            #input("Press Enter to continue...")
-
-    print("done with stride of ", stride)
-            #print("-----#------#------#---")
-    
-
-
-
-    
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Predict on many examples')
-    parser.add_argument("model", type=str, help="test_model")
-    parser.add_argument("iters", type=int, help="iters")
-    parser.add_argument("--stride", type=int, default=2, help="batch size")
-    parser.add_argument("--width", type=int, default= 10, help="batch size")
-    parser.add_argument("--height", type=int, default=5, help="batch size")
-    args = parser.parse_args()
-
-    torch.manual_seed(123456)
-
-    model = Net() 
-    model.load_state_dict(torch.load('../donemodel/'+args.model))
-
-    model.eval()
-    batch_size = 1
-    dataloaders,dataset_sizes =data_process_lisa(batch_size)
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    model = model.to(device)
-    
-   
-    run(model, args.stride ,args.width ,args.height ,dataloaders )
-
-
 
 

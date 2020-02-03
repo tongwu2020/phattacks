@@ -1,3 +1,15 @@
+# this file is based on https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+# Author: Sasank Chilamkurthy
+
+'''
+We use this file to train the clean model to classify the images.
+We do not tune a lot of hyperparmeters, all default hyperparameters showed below.
+We obtain more than 98% of accuracy
+type 'python origin_train.py', to run the model the output model is named new_ori_model.pt
+
+'''
+
+
 from __future__ import print_function, division
 import torch
 import torch.nn as nn
@@ -13,16 +25,10 @@ import time
 import PIL
 import os
 import copy
-import cv2
 import torch.nn.functional as F
 import torchfile
-import shutil
-import re
 
 
-
-
-plt.ion()   # interactive mode
 
 def data_process_lisa(batch_size=64):
     data_transforms = {
@@ -31,7 +37,6 @@ def data_process_lisa(batch_size=64):
         #transforms.RandomResizedCrop(32),
         #transforms.RandomHorizontalFlip(),
         #transforms.ColorJitter(hue=.1, saturation=.1),
-        #transforms.RandomRotation(20, resample=PIL.Image.BILINEAR),
         transforms.ToTensor(),
         
     ]),
@@ -73,7 +78,6 @@ class Net(nn.Module):
         self.conv1 = nn.Conv2d(3, 64, 8, stride=2, padding=3)
         self.conv2 = nn.Conv2d(64, 128, 6, stride=2,padding = 0 )
         self.conv3 = nn.Conv2d(128, 128, 5,stride=1, padding = 0)
-        #self.dense1_bn = nn.BatchNorm1d(512)
         self.fc1 = nn.Linear(512, 16)
 
     def forward(self, x):
@@ -116,7 +120,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=2):
                 device1 = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
                 inputs = inputs.to(device1)
                 labels = labels.to(device1)
-                #print(inputs.size(),labels.size())
+
                 # zero the parameter gradients
                 optimizer.zero_grad()
 
@@ -125,11 +129,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=2):
                 with torch.set_grad_enabled(phase == 'train'):
                     
                     outputs = model(inputs)
-                    #save_image("ori_img",inputs)
-                    
-                    
                     _, preds = torch.max(outputs, 1)
-
                     loss = criterion(outputs, labels)
 
                     # backward + optimize only if in training phase
@@ -174,8 +174,7 @@ if __name__ == "__main__":
     model_ft = Net()
 
     #model_ft=nn.DataParallel(model_ft,device_ids=[0,1]) 
-    
-    #print(model_ft)
+    #if you want to use the mutliple gpus to run 
     
     model_ft = model_ft.to(device)
     summary(model_ft, (3, 32, 32))
@@ -185,9 +184,7 @@ if __name__ == "__main__":
     
     # Observe that all parameters are being optimized
     optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.03, momentum=0.9)
-    #optimizer_ft = optim.Adam(model_ft.parameters(), lr=0.01)
-    #optimizer_ft = optim.Adadelta(model_ft.parameters(), lr=0.1, rho=0.9, eps=1e-06, weight_decay=0.01)
-    
+
     # Decay LR by a factor of 0.1 every 10 epochs
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=15, gamma=0.1)
     
@@ -197,6 +194,6 @@ if __name__ == "__main__":
     
     print("..............3...............")
     
-    torch.save(model_ft.state_dict(), '../donemodel/new_ori_model2.pt')
+    torch.save(model_ft.state_dict(), '../donemodel/new_ori_model.pt')
     
     

@@ -1,3 +1,18 @@
+# this file is based on https://github.com/locuslab/smoothing
+# This is done by Jeremy Cohen, Elan Rosenfeld, and Zico Kolter 
+
+'''
+This file is used to test the randomized smoothing against sticker attacks
+Type 'python smooth_glassattack.py {}.pt -sigma 1 '
+{}.pt is the name of gaussian model you need to train by gaussian_train.py
+1 is sigma of gaussian noise (I use same sigma with the sigma training the gaussian model)
+
+
+[ 10,100,1000 ] # this is default numbers we used in experiment, 
+which is the iterations of attacks 
+'''
+
+
 import argparse
 from core import Smooth
 from time import time
@@ -9,7 +24,7 @@ import numpy as np
 import torchvision
 from train_model import Net
 from torchvision import datasets, models, transforms
-from save_image import save_image 
+
 import os
 import copy
 import cv2
@@ -17,11 +32,12 @@ from physical_attack import untarget_attack
 
 
 
+
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='Predict on many examples')
     parser.add_argument("model", type=str, help="test_model")
-    parser.add_argument("sigma", type=float, help="noise hyperparameter")
+    parser.add_argument("-sigma", type=float, help="noise hyperparameter")
     parser.add_argument("--batch", type=int, default=1000, help="batch size")
     parser.add_argument("--skip", type=int, default=1, help="how many examples to skip")
     parser.add_argument("--max", type=int, default=-1, help="stop after this many examples")
@@ -41,8 +57,7 @@ if __name__ == "__main__":
     smoothed_classifier = Smooth(model, 16, args.sigma)
     torch.manual_seed(123456)
 
-    #for i in [ 10,100,1000 ]:
-    for i in [ 1000 ]:
+    for i in [ 10,100,1000 ]:
         cor = 0
         tot = 0 
         for k in dataloaders['test']:
@@ -51,21 +66,13 @@ if __name__ == "__main__":
             labels = label.to(device)
     
             before_time = time()
-            x1 = untarget_attack(model, x, labels, 0.02, num_iter=i )
-            
+            x1 = untarget_attack(model, x, labels, 0.02, num_iter=i )           
             prediction = smoothed_classifier.predict(x1, args.N, args.alpha, args.batch)
-            #print("label is ", label, "prediction is ", prediction)
             after_time = time()
             cor += int(prediction == int(label))
             tot += int(prediction == prediction)
-            print(prediction, int(label))
-            if int(prediction != int(label)):
-                save_image('11uatt'+str(tot)+str(prediction),x.data)
-                save_image('11att'+str(tot)+str(prediction),x1.data)
             time_elapsed = str(datetime.timedelta(seconds=(after_time - before_time)))
-            # log the prediction and whether it was correct
-            #print("{}\t{}\t{}\t{}\t{}".format(i, label, prediction, cor, time_elapsed))
-            print(cor/tot)
+        print("The final accuracy is", cor/tot)
 
 
 

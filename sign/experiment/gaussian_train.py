@@ -1,3 +1,18 @@
+# this file is based on https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+# Author: Sasank Chilamkurthy
+
+'''
+We use this file to do the gausian training in order to do Randomized smoothing 
+Type 'python linf_retrain.py {}.pt ' to run
+{} name of your model want to train from a clean model, right now it is training from xavier_uniform initial weight,
+so type something to fill in {}
+name of your output models can be changed 
+sigma of gaussian can be changed 
+other hyperparameter is defult, like epochs of training is 30, learning rate is ...
+'''
+
+
+
 from __future__ import print_function, division
 import torch
 import torch.nn as nn
@@ -6,25 +21,16 @@ from torch.optim import lr_scheduler
 import numpy as np
 import torchvision
 from torchvision import datasets, models, transforms
-import matplotlib.pyplot as plt
 from torchvision import models
 from torchsummary import summary
-from save_image import save_image 
+#from save_image import save_image
+#uncomment to see some images 
 from train_model import data_process_lisa
+import torch.nn.functional as F
 import time
 import PIL
 import os
 import copy
-import cv2
-import torch.nn.functional as F
-import torchfile
-import shutil
-import re
-
-
-
-
-plt.ion()   # interactive mode
 
     
 
@@ -79,10 +85,11 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=2):
             for inputs, labels in dataloaders[phase]:
                 device1 = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
                 inputs = inputs.to(device1)
-                inputs = inputs.detach() + ( torch.randn_like(inputs, device='cuda') * 1 )
-                save_image('gaussian100',inputs.detach())
+                #change the noise here
+                inputs = inputs.detach() + ( torch.randn_like(inputs, device='cuda') * 1 ) 
+
+                #save_image('gaussian100',inputs.detach())
                 labels = labels.to(device1)
-                #print(inputs.size(),labels.size())
                 # zero the parameter gradients
                 optimizer.zero_grad()
 
@@ -91,9 +98,6 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=2):
                 with torch.set_grad_enabled(phase == 'train'):
                     
                     outputs = model(inputs)
-                    #save_image("ori_img",inputs)
-                    
-                    
                     _, preds = torch.max(outputs, 1)
 
                     loss = criterion(outputs, labels)
@@ -140,9 +144,7 @@ if __name__ == "__main__":
     model_ft = Net()
 
     #model_ft=nn.DataParallel(model_ft,device_ids=[0,1]) 
-    
-    #print(model_ft)
-    
+
     model_ft = model_ft.to(device)
     summary(model_ft, (3, 32, 32))
     model_ft.apply(weights_init)
@@ -150,9 +152,7 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
     
     # Observe that all parameters are being optimized
-    #optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.03, momentum=0.9)
     optimizer_ft = optim.Adam(model_ft.parameters(), lr=0.01)
-    #optimizer_ft = optim.Adadelta(model_ft.parameters(), lr=0.1, rho=0.9, eps=1e-06, weight_decay=0.01)
     
     # Decay LR by a factor of 0.1 every 10 epochs
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=15, gamma=0.1)
@@ -163,6 +163,6 @@ if __name__ == "__main__":
     
     print("..............3...............")
     
-    torch.save(model_ft.state_dict(), '../donemodel/new_rs_model1005.pt')
+    torch.save(model_ft.state_dict(), '../donemodel/new_rs_model1004.pt') # change the name 
     
     

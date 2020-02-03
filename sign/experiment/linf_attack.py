@@ -1,9 +1,16 @@
+'''
+We use this file to test the L_infty (L infinite) robustness 
+Type 'python linf_attack.py {}.pt' ({} name of your model want to test) to run
+This is based on https://adversarial-ml-tutorial.org
+'''
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 import argparse
-from save_image import save_image
+#from save_image import save_image 
+#uncomment to show images  
 from train_model import Net
 from train_model import data_process_lisa
 
@@ -19,8 +26,7 @@ def l_inf_pgd(model, X, y, epsilon=1, alpha=1, num_iter=20, randomize=False):
     else:
         delta = torch.zeros_like(X, requires_grad=True)
     for t in range(num_iter):
-        #print("reach")
-        loss = nn.CrossEntropyLoss()(model(X + delta ), y) #rgb to bgr 
+        loss = nn.CrossEntropyLoss()(model(X + delta ), y)
         loss.backward()
         
         delta.data = (delta + alpha*delta.grad.detach().sign()).clamp(-epsilon,epsilon)
@@ -36,11 +42,16 @@ if __name__ == "__main__":
     parser.add_argument("model", type=str, help="test_model")
     args = parser.parse_args() 
 
-    eps     = [2   , 4   , 8  , 16 , 2   , 4   , 8  , 16 ]
-    alpha   = [0.5 , 1   , 2  , 4  , 0.5 , 1   , 2  , 4  ]
-    itera   = [7   , 7   , 7  , 7  , 20  , 20  , 20 , 20 ]
-    restart = [1   , 1   , 1  , 1  , 1   , 1   , 1  , 1  ]
+    eps     = [2   , 4   , 8  , 16 , 2   , 4   , 8  , 16 ] # eps is epsilon of the l infty bound 
+    alpha   = [0.5 , 1   , 2  , 4  , 0.5 , 1   , 2  , 4  ] # alpha is learning rate 
+    itera   = [7   , 7   , 7  , 7  , 20  , 20  , 20 , 20 ] # iterations to find optimal 
+    restart = [1   , 1   , 1  , 1  , 1   , 1   , 1  , 1  ] # restart times, since we just do some standard check of our model, 
+    #we do not use mutliple restarts, but you can change that if you want
     
+    # change the hyperparmeters here if you want to test more 
+    # delete some hyperparmeters could speed up 
+    
+  
     model = Net() 
     model.load_state_dict(torch.load('../donemodel/'+args.model))
     
@@ -67,15 +78,13 @@ if __name__ == "__main__":
                 with torch.no_grad():
                     model.eval()
                     outputs = model(images + delta)
-                    save_image("linf_attack",images+delta)
+                    #save_image("linf_attack",images+delta)
+                    #uncomment to show images  
                     
                     _, predicted = torch.max(outputs.data, 1)
                 
-                    #print("predicted is ",predicted,"labels are",labels)
                     check_num += (predicted == labels)
-                    #print("yes",check_num)
             correct += (correct_num == check_num).sum().item()
-            #print("one batch is over, batch size", labels.size(0), "correct predict is " ,(correct_num == check_num).sum().item())
 
         print("eps is ",eps[i],", alpha is ",alpha[i],", iteration is ",itera[i]," restart is ", restart[i])
         print('Accuracy of the network on the %s test images: %10.5f %%' % (total,100 * correct / total))

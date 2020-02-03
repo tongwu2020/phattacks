@@ -1,3 +1,21 @@
+# this file is based on https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+# Author: Sasank Chilamkurthy
+
+'''
+This file basically runs Defending against rectangular Occlusion Attacks (DOA) see paper 
+Type 'python sticker_retrain.py {}.pt -alpha 0.01 -iters 30 -out 99 -search 1 -epochs 5' to run 
+{}.pt is the name of model you want to train with DOA 
+alpha is learning rate of PGD e.g. 0.01
+iters is the iterations of PGD e.g.30
+out is name of your final model e.g.99
+search is method of searching, '0' is exhaustive_search, '1' is gradient_based_search"
+epochs is the epoch you want to fine tune your network e.g. 5
+
+Note that ROA is a abstract attacking model simulate the "physical" attacks
+Thus there is no restriction for the mask to be rectangle
+'''
+
+
 import sys
 import torch
 import torch.nn as nn
@@ -13,13 +31,14 @@ import argparse
 import copy
 from test_model import test
 from train_model import Net
-from save_image import save_image
-from sticker_attack import sticker
+from sticker_attack import ROA
+
+# from save_image import save_image
+# uncomment to see some images 
 
 
 
-
-def sticker_train_model(model, criterion, optimizer, scheduler, num_epochs=10):
+def sticker_train_model(model, criterion, optimizer, scheduler,alpha, iters, search,  num_epochs=10):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     since = time.time()
     best_model_wts = copy.deepcopy(model.state_dict())
@@ -39,14 +58,19 @@ def sticker_train_model(model, criterion, optimizer, scheduler, num_epochs=10):
             running_corrects = 0
 
             for inputs, labels in dataloaders[phase]:
-                stickers = sticker( model,args.alpha,args.iters)
+                roa = ROA( model,32) # 32 is the image size 
                 
-                with torch.set_grad_enabled(args.mode=="grad"):
-                    if args.mode == "grad":
-                        inputs = stickers.find_gradient(inputs, labels, args.width,args.height,args.stride,args.stride)
-                    if args.mode == "exh":
-                        inputs = stickers.predict(inputs, labels, args.width,args.height,args.stride,args.stride)
-                    save_image('2sticker_'+str(args.width)+str(args.iters)+args.mode,inputs)
+                with torch.set_grad_enabled(search==1):
+                    if search == 0:
+                        inputs = roa.exhaustive_search(inputs, labels, args.alpha, args.iters, args.width, \
+                            args.height, args.stride, args.stride)
+                    # if the number is wrong, run gradient_based_search, since this method can save time
+                    else:
+                        inputs = roa.gradient_based_search(inputs, labels, args.alpha, args.iters, args.width, \
+                            args.height, args.stride, args.stride, args.nums_choose)
+
+                    #save_image('ROA_attack'+str(args.width)+str(args.iters),inputs)
+                    # uncomment to see some images
                     
                 optimizer.zero_grad()
                 
@@ -61,9 +85,7 @@ def sticker_train_model(model, criterion, optimizer, scheduler, num_epochs=10):
                         optimizer.step()
                 # statistics
                 running_loss += loss.item() * inputs.size(0)
-                #print(preds,labels)
                 running_corrects += torch.sum(preds == labels.data)
-                #print(running_loss,running_corrects)
             epoch_loss = running_loss / dataset_sizes[phase]
             epoch_acc = running_corrects.double() / dataset_sizes[phase]
 
@@ -90,21 +112,25 @@ def sticker_train_model(model, criterion, optimizer, scheduler, num_epochs=10):
 if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='Predict on many examples')
-    parser.add_argument("model", type=str, help="ori_model")
-    parser.add_argument("alpha", type=float, help="alpha")
-    parser.add_argument("iters", type=int, help="iters")
-    parser.add_argument("out", type=int, help="out")
-    parser.add_argument("mode", type=str, help="mode")
-    parser.add_argument("epochs", type=int, help="epochs")
-    parser.add_argument("--stride", type=int, default=2, help="stride") #2
-    parser.add_argument("--width" , type=int, default=7, help="width")
-    parser.add_argument("--height", type=int, default=7, help="height")
+    parser.add_argument("model", type=str, help="original(clean) model you want to do DOA ")
+    parser.add_argument("-alpha", type=float, help="alpha leanrning rate")
+    parser.add_argument("-iters", type=int, help="iterations of PGD ")
+    parser.add_argument("-out", type=int, help="name of final model")
+    parser.add_argument("-search", type=int, help="method of searching, \
+        '0' is exhaustive_search, '1' is gradient_based_search")
+    parser.add_argument("-epochs", type=int, help="epochs")
+    parser.add_argument("--stride", type=int, default=2, help="the skip pixels when searching")
+    parser.add_argument("--width", type=int, default= 7, help="width of the rectuagluar occlusion")
+    parser.add_argument("--height", type=int, default=7, help="height of the rectuagluar occlusion")
+    parser.add_argument("--nums_choose", type=int, default=5, help="number of potential positons for final search")
     args = parser.parse_args()
-    for i in [5,6,7]:
+
+    for i in [0,1,2,3,4]: 
+        #since the model may not train well, we use 5 random seed to generate 5 models.
         seed = i
         torch.manual_seed(seed)
         torch.cuda.empty_cache()
-        print('../donemodel/new_sticker_model0'+str(args.out)+str(seed)+'.pt')
+        print('Outout model name is ../donemodel/new_sticker_model0'+str(args.out)+str(seed)+'.pt')
         dataloaders,dataset_sizes =data_process_lisa(batch_size =256) #256
     
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -125,7 +151,7 @@ if __name__ == "__main__":
         exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=100, gamma=0.3)
 
     
-        model_ft = sticker_train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,num_epochs=args.epochs)
+        model_ft = sticker_train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,args.alpha, args.iters,args.search, num_epochs=args.epochs)
         test(model_ft,dataloaders,dataset_sizes)
 
         torch.save(model_ft.state_dict(), '../donemodel/new_sticker_model0'+str(args.out)+str(seed)+'.pt')

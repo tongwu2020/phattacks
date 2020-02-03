@@ -1,3 +1,14 @@
+# This file is based on https://github.com/jhayes14/adversarial-patch
+# We use square patch to test our model 
+
+'''
+The attack is learned from 15 images, each classes have 1 images.
+Type 'python make_patch.py {}.pt'  to run 
+{} is the name of your model want to attack.
+Note that you cannot attack randomized smoothing in this file, 
+please use smooth_patch.py
+'''
+
 import argparse
 import os
 import random
@@ -17,7 +28,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 
 from make_patch_utils import *
 from train_model import Net
-from save_image import *
+
 
 
 
@@ -34,8 +45,6 @@ def train(epoch, patch, patch_shape):
             data = data.cuda()
             labels = labels.cuda()
         data, labels = Variable(data), Variable(labels)
-
-        #save_image('sourceimg11',data.data)
 
         prediction = netClassifier(data)
  
@@ -62,23 +71,13 @@ def train(epoch, patch, patch_shape):
         
         adv_label = netClassifier(adv_x).data.max(1)[1][0]
         ori_label = labels.data[0]
-        save_image('aadvimg1',adv_x.data)
         
         if adv_label == target:
             success += 1
       
             if plot_all == 1: 
-                # plot source image
-                #vutils.save_image(data.data, "./%s/%d_%d_original.png" %(opt.outf, batch_idx, ori_label), normalize=True)
-                save_image('sourceimg',data.data)
-                
-                
-                # plot adversarial image
-                #vutils.save_image(adv_x.data, "./%s/%d_%d_adversarial.png" %(opt.outf, batch_idx, adv_label), normalize=True)
-                save_image('advimg',adv_x.data)
-                
-                
-                
+                pass
+
         masked_patch = torch.mul(mask, patch)
         patch = masked_patch.data.cpu().numpy()
         new_patch = np.zeros(patch_shape)
@@ -152,8 +151,8 @@ def test(epoch, patch, patch_shape):
         patch = new_patch
 
         # log to file  
-        progress_bar(batch_idx, len(test_loader), "Test Success: {:.3f}".format(success/total))
-        print(total)
+        #progress_bar(batch_idx, len(test_loader), "Test Success: {:.3f}".format(success/total))
+    print("Test Patch Accuracy is :", 1- success/total)
 
 def attack(x, patch, mask):
     netClassifier.eval()
@@ -187,10 +186,6 @@ def attack(x, patch, mask):
  
         out = F.softmax(netClassifier(adv_x), dim=1)
         target_prob = out.data[0][target]
-        #y_argmax_prob = out.data.max(1)[0][0]
-        
-        #print(count, conf_target, target_prob, y_argmax_prob)  
-        save_image('adv_x11',adv_x.data)
 
         if count >= opt.max_count:
             break

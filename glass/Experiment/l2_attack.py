@@ -43,7 +43,6 @@ def pgd2(model, X, y, epsilon=0.5, alpha=0.01, num_iter=20, randomize=False, res
         
         
         for t in range(num_iter):
-            #print("reach")
             loss = nn.CrossEntropyLoss()(model(X + delta ), y)
             loss.backward()
             delta.data += alpha*delta.grad.detach() / norms(delta.grad.detach())
@@ -55,7 +54,6 @@ def pgd2(model, X, y, epsilon=0.5, alpha=0.01, num_iter=20, randomize=False, res
         all_loss = nn.CrossEntropyLoss(reduction='none')(model(X+delta),y)
         max_delta[all_loss >= max_loss] = delta.detach()[all_loss >= max_loss]
         max_loss = torch.max(max_loss, all_loss)
-        #print(max_delta)
 
     return max_delta
 

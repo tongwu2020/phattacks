@@ -96,8 +96,8 @@ class Smooth(object):
                 noise = torch.randn_like(batch, device='cuda') * self.sigma * 255
 
                 #if you want to clip 
-                #mean = torch.Tensor(np.array([129.1863, 104.7624, 93.5940])).view(1, 3, 1, 1).to(x.device)
-                #out = (batch+noise+mean).clamp(0,255)-
+                mean = torch.Tensor(np.array([129.1863, 104.7624, 93.5940])).view(1, 3, 1, 1).to(x.device)
+                out = (batch+noise+mean).clamp(0,255)
 
                 
                 #save_image('rsl2_input100',out)

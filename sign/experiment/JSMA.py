@@ -1,10 +1,21 @@
+'''
+JSMA attack against models 
+Type 'python JSMA.py {}.pt' to run 
+{}.pt is the name of model you want to attack by JSMA
+
+Note that the output will be accuracy when changing 10,100,1000,10000 points
+The output will be in jsma_output
+'''
+
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
 import argparse
 from train_model import Net
-from save_image import save_image2
+#from save_image import save_image2
+#uncomment to see images 
 import foolbox
 import torchvision
 import os 
@@ -14,31 +25,24 @@ from torchvision import datasets, models, transforms
 def data_process(batch_size=64):
     # Data augmentation and normalization for training
     # Just normalization for validation
-    #mean = [0.367035294117647,0.41083294117647057,0.5066129411764705]
     data_transforms = {
     'train': transforms.Compose([
         transforms.Resize(size = (32,32)), 
-        #transforms.RandomCrop(224),
         #transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
         #do not have transforms before
-       # transforms.Normalize(mean, [1/255, 1/255, 1/255])
     ]),
     'val': transforms.Compose([
         transforms.Resize(size = (32,32)),
-        #transforms.CenterCrop(224),
         #transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-       # transforms.Normalize(mean, [1/255, 1/255, 1/255])
     ]),
     'test': transforms.Compose([
         transforms.Resize(size = (32,32)),
-        #transforms.CenterCrop(224),
         transforms.ToTensor(),
-        #transforms.Normalize(mean, [1/255, 1/255, 1/255])
     ]),
     }
-								
+                                
     data_dir = '../LISA'   # change this 
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
                                           data_transforms[x])
@@ -65,7 +69,6 @@ def data_process(batch_size=64):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='test')
     parser.add_argument("model", type=str, help="test_model")
-    #parser.add_argument("attack", type=str, help="attack")
     args = parser.parse_args()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")   
 
@@ -91,7 +94,7 @@ if __name__ == "__main__":
     hundred = 0 
     thousand = 0 
     tenthousand = 0 
-    f = open('./k1.txt', 'w')
+    f = open('./jsma_output.txt', 'w')
     
     for max_i in [100000]:
         for data in dataloaders['val']:
@@ -112,7 +115,7 @@ if __name__ == "__main__":
                 if adversarial is not None:
                     
                     #save_image2("jsmadiff",image - adversarial)
-                    #print(np.sum(( (image - adversarial) == 0)*1, 0 ))
+                    #uncomment to see some images 
                     count =  32*32 - np.sum( (np.sum(( (image - adversarial) == 0)*1, 0 ) == 3)*1 ) 
                     
                     k[i] = count
@@ -121,19 +124,8 @@ if __name__ == "__main__":
                     thousand += (count <= 1000 ) *1
                     tenthousand += (count <= 10000 ) *1
                     print(count,file = f, flush=True)
-                    print(count)
-                    
-                    #print( 150528 - np.sum(( (image - adversarial) == 0)*1 ))
-                    
-                    save_image2("jsma",adversarial)
-                    
-                    #print(total)
-                    #yp = np.argmax(fmodel.forward_one(adversarial))
-                    #yk = np.argmax(fmodel.forward_one(image))
-                    # if yp == label:
-                    #     correct += 1
+                    #print(count)
                     kk += 1
-        #print(k,file = f, flush=True)
         f.close()
         print("all", (total-kk)/total, "  10: ", (total-ten)/total ,"  100: ", (total-hundred)/total, "  1000: ",(total-thousand)/total,"  10000: ", (total-tenthousand)/total )
         print('Accuracy of the network on the %s test images: %10.5f %%' % (total,100 * (total-kk)/total))

@@ -1,3 +1,8 @@
+'''
+We use this file to test the clean accuracy.
+Type 'python origin_test {}.pt '  ({} name of your model want to test) to run
+'''
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -21,17 +26,18 @@ def test(model,dataloaders,dataset_sizes):
     with torch.no_grad():
         for data in dataloaders['val']:
             images, labels = data
-            if labels.data == 4: 
-                 continue
+
+            # if labels.data == 4: 
+            #      continue
+            # uncomment to test the adversarial patch 
+
             images = images.to(device)
             labels = labels.to(device)
             outputs = model(images)
             
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
-            #print(predicted)
             correct += (predicted == labels).sum().item()
-            #print(correct/total)
     print('Accuracy of the network on the %s test images: %10.5f %%' % (total,100 * correct / total))
 
 

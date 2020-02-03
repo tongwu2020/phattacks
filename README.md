@@ -10,18 +10,11 @@
 We study the problem of defending deep neural network approaches for image classification from physically realizable attacks. First, we demonstrate that the two most scalable and effective methods for learning robust models, adversarial training with PGD attacks and randomized smoothing, exhibit very limited effec- tiveness against three of the highest profile physical attacks. Next, we propose a new abstract adversarial model, rectangular occlusion attacks, in which an ad- versary places a small adversarially crafted rectangle in an image, and develop two approaches for efficiently computing the resulting adversarial examples. Fi- nally, we demonstrate that adversarial training using our new attack yields image classification models that exhibit high robustness against the physically realizable attacks we study, offering the first effective generic defense against such attacks.
 
 
-### <img src="figures/figure2.png" height="210" width="860">
-
-
 ## Usage
-
-
-## Image Geolocation
-The image geolocation is casted as an image classification problem. We use VGG16 for this task and get the image features. The code was adapted from [https://github.com/ayanc/tf-boilerplate](https://github.com/ayanc/tf-boilerplate). 
-
-Requirement: tensorflow version 1.7.0
-
-This section ```VGG16``` is for users who want to apply our approach on their own photo collections, where they can adopt these codes to get image feature for your image. We have provided the links and label of the images we used. 
+1. 
+```
+Clone this repository: git clone https://github.com/tongwu2020/phattacks.git
+```
 
 ## Album Geolocation
 

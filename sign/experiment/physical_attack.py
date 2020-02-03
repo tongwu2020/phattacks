@@ -1,3 +1,19 @@
+# This file is based on (pytorch version of) https://github.com/evtimovi/robust_physical_perturbations
+# It carries its own MIT License.
+
+
+'''
+Sticker Attacks
+Type 'python physical_attack.py {}.pt'  to run 
+{} is the name of your model want to attack. Note that you cannot attack randomized smoothing in this file, 
+please use smooth_glassattack.py
+iterations   = [10,100,1000] # this is default numbers we used in experiment, 
+which is the iterations of attacks 
+
+Note that the attack is in digit space (not involved rotation and scale) (fixed eyeglass frame mask),
+and untargeted (maximize the loss of (f(x),y) )
+'''
+
 import torch
 from torch import Tensor
 import torch.nn as nn
@@ -11,33 +27,20 @@ import copy
 import torchfile
 import torchvision
 from torchvision import datasets, models, transforms
-from save_image import save_image
+#from save_image import save_image 
+#uncomment to see some images 
 import cv2
 
 
 
-'''
-
-flags.DEFINE_float('attack_lambda', 0.02, 'The lambda parameter in the attack optimization problem')
-flags.DEFINE_float('optimization_rate', 0.1, 'The optimization rate (learning rate) for the Adam optimizer of the attack objective')
-
-flags.DEFINE_string('regloss', '', 'Specifies the regularization loss to use. Options: l1. Anything else defaults to l2')
-
-flags.DEFINE_float('adam_beta1', 0.9, 'The beta1 parameter for the Adam optimizer of the attack objective')
-flags.DEFINE_float('adam_beta2', 0.999, 'The beta2 parameter for the Adam optimizer of the attack objective')
-flags.DEFINE_float('adam_epsilon', 1e-08, 'The epsilon parameter for the Adam optimizer of the attack objective')
-
-'''
-
 
 def untarget_attack(model, X, y, lamb, num_iter=100):
     """ Construct target_attack adversarial examples on the examples X"""
- 
- 
+
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     
     sticker = cv2.imread('../mask/maskdone4.jpg')
-    #maskdone4.jpg   mask_l1loss_uniform_rectangles.png
+    # maskdone4.jpg maskdone5.jpg maskdone6.jpg   mask_l1loss_uniform_rectangles.png
     sticker = transforms.ToTensor()(sticker)
     sticker = sticker.to(device)
     noise = torch.rand_like(X).float() * sticker
@@ -60,7 +63,6 @@ def untarget_attack(model, X, y, lamb, num_iter=100):
         loss1 = -nn.CrossEntropyLoss()(model(X+noiseVar), y) 
         loss2 = +lamb * torch.norm(noiseVar, 2)
         loss = loss1 + loss2
-        #print(loss1,loss2)
         #may omit regloss since sticker attack does not need it
         
         loss1.backward(retain_graph=True)
@@ -68,7 +70,8 @@ def untarget_attack(model, X, y, lamb, num_iter=100):
         noiseVar = noiseVar * sticker
         noiseVar = (X+noiseVar).clamp(0,1) -X
         
-    save_image('phy_att_l2_image',X.detach()+noiseVar.detach())
+    #save_image('phy_att_image',X.detach()+noiseVar.detach())
+    #uncomment to see some images 
     return X.detach()+noiseVar.detach()
     
     
@@ -86,8 +89,6 @@ if __name__ == "__main__":
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model.to(device)
     
-
-    
     
     
     torch.manual_seed(12345)
@@ -97,14 +98,13 @@ if __name__ == "__main__":
         for data in dataloaders['val']:
             images, labels = data
             #save_image('phy_att_start',X1.detach())
-            #noise = autograd.Variable(modifier, requires_grad=True)
+            #uncomment to see some images
             device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
             images = images.to(device)
             images = untarget_attack(model, images, labels, 0.02, num_iter=num)
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
-            #print(predicted)
             correct += (predicted == labels.to(predicted.device)).sum().item()
         print('num of iteration is ', num)
         print('Accuracy of the network on the %s test images: %10.5f %%' % (total,100 * correct / total))

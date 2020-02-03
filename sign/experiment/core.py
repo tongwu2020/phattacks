@@ -1,9 +1,14 @@
+# this file is from https://github.com/locuslab/smoothing
+# This is done by Jeremy Cohen, Elan Rosenfeld, and Zico Kolter 
+
+
 import torch
 from scipy.stats import norm, binom_test
 import numpy as np
 from math import ceil
 from statsmodels.stats.proportion import proportion_confint
-from save_image import save_image 
+#from save_image import save_image 
+#uncomment to see some images 
 
 
 class Smooth(object):
@@ -90,7 +95,8 @@ class Smooth(object):
                 batch = x.repeat((this_batch_size, 1, 1, 1))
                 noise = torch.randn_like(batch, device='cuda') * self.sigma
                 out = (batch+noise).clamp(0,1)
-                save_image('rs_'+ str(int(self.sigma*100)),out)
+                #save_image('rs_'+ str(int(self.sigma*100)),out)
+                #uncomment to see some images 
                 predictions = self.base_classifier(batch+noise).argmax(1)
                 counts += self._count_arr(predictions.cpu().numpy(), self.num_classes)
             return counts
