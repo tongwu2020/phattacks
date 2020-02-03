@@ -7,7 +7,7 @@
 [Defending Against Physically Realizable Attacks on Image Classification](https://arxiv.org/abs/1909.09552) 
 
 
-## ABSTRACT
+## Abstract
 
 We study the problem of defending deep neural network approaches for image classification from physically realizable attacks. First, we demonstrate that the two most scalable and effective methods for learning robust models, adversarial training with PGD attacks and randomized smoothing, exhibit very limited effectiveness against three of the highest profile physical attacks. Next, we propose a new abstract adversarial model, rectangular occlusion attacks, in which an adversary places a small adversarially crafted rectangle in an image, and develop two approaches for efficiently computing the resulting adversarial examples. Finally, we demonstrate that adversarial training using our new attack yields image classification models that exhibit high robustness against the physically realizable attacks we study, offering the first effective generic defense against such attacks.
 
@@ -31,11 +31,11 @@ Basically, there are three characteristics.
 
 ## Abstract Attack Model: Rectangular Occlusion Attacks (ROA)
 
-This rectangle can be placed by the adversary anywhere in the image.
-Attacker can furthermore introduce l_infty noise inside the rectangle with epsilon = 255.
-This attack is untargeted attack
+We introduce a rectangle which can be placed by the adversary anywhere in the image. Then the attacker can furthermore introduce l_infty noise inside the rectangle with epsilon = 255.
 
-## Determine the Location
+
+#### How to determine the Location of this rectangle
+
 1. Exhaustive Searching : Adding a grey rectangular sticker to image, considering all possible locations and choosing the worst-case attack
 2. Gradient Based Searching : Computing the magnitude of the gradient w.r.t each pixel, considering all possible locations and choosing C locations with largest magnitude. Exhaustively searching among these C locations.
 
