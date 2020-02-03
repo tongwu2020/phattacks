@@ -3,7 +3,7 @@
 ### Tong Wu, Liang Tong, Yevgeniy Vorobeychik
  
 
-[[arXiv]](https://arxiv.org/abs/1909.09552)   **first version**
+[Defending Against Physically Realizable Attacks on Image Classification](https://arxiv.org/abs/1909.09552)   **first version**
 
 
 ## ABSTRACT
