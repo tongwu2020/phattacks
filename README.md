@@ -5,8 +5,8 @@
 #### Department of Computer Science and Engineering,
 #### Washington University in St. Louis
  
-
-[Defending Against Physically Realizable Attacks on Image Classification](https://arxiv.org/abs/1909.09552)   **first version**
+### Paper 
+[Defending Against Physically Realizable Attacks on Image Classification](https://arxiv.org/abs/1909.09552) 
 
 
 ## ABSTRACT
