@@ -1,6 +1,6 @@
 # Defending Against Physically Realizable Attacks on Image Classification
 
-### Tong Wu, Liang Tong, Yevgeniy Vorobeychik
+### [Tong Wu](https://tongwu2020.github.io/tongwu/), [Liang Tong](https://liang-tong.me), Yevgeniy Vorobeychik
  
 
 [Defending Against Physically Realizable Attacks on Image Classification](https://arxiv.org/abs/1909.09552)   **first version**
