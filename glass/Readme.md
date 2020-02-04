@@ -29,13 +29,29 @@ python linf_retrain.py {}.pt  -eps 4 -alpha 1 -iters 20 -out 70 -epochs 30
 ```
 {} name of your model want to retrain (only for curriculum adversarial training), if doing adversarial training, fill in anything you want to run.
 
-eps is the epsilon of l_infty bound, e.g. 4
-alpha is the learning rate of PGD,  e.g. 1
-iters is the iterations of PGD, e.g.20
-out is name of your output models, e.g. 70
-epochs is epochs you want to train, e.g.30 
+eps is the epsilon of l_infty bound;
+alpha is the learning rate of PGD;
+iters is the iterations of PGD; 
+out is name of your output models; 
+epochs is epochs you want to train; 
 
 Currently, the model is used to adversarial training. For curriculum adversarial training, 
-change the code in if __name__ == "__main__": refer to roughly line 131. 
+change the code in ```if __name__ == "__main__":``` refer to roughly line 131. 
+
+
+### 3. Randomized Smoothing 
+
+#### Training the model with Guassian noise
+```
+python linf_retrain.py {}.pt -out 70 -sigma 1
+```
+{} name of your model want to train from a clean model, right now it is training from pretrain weight,
+so type anything to fill in {}. out is name of your output models (perfer a int); sigma is the sigma of gaussian noise add to original images.
+
+
+
+
+
+
 
 
