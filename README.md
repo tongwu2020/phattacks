@@ -70,7 +70,7 @@ git clone https://github.com/tongwu2020/phattacks.git
 conda create -n phattack
 conda activate phattack
 # Install following packages:
-# See https://pytorch.org/ for the correct command for your system to install correct version of Pytorch 
+# See https://pytorch.org/ for the command for your system to install correct version of Pytorch 
 conda install scipy pandas statsmodels matplotlib seaborn numpy 
 conda install -c conda-forge opencv
 # May need more packages 
