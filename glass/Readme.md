@@ -19,6 +19,7 @@ You don't have to download the VGGFace Pretrained Model, since we released a tra
 ### 2. Adversarial Training & Curriculum Adversarial Training
 
 #### L_inf adversarial training 
+Download the [VGGFace Pretrained Model](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/src/vgg_face_torch.tar.gz) (About 540M) as well.
 ```
 python linf_retrain.py {}.pt  -eps 4 -alpha 1 -iters 20 -out 70 -epochs 30
 ```
@@ -31,6 +32,8 @@ python linf_retrain.py {}.pt  -eps 4 -alpha 1 -iters 20 -out 70 -epochs 30
 
 Currently, the model is used to adversarial training. For curriculum adversarial training, 
 change the code in ```if __name__ == "__main__":``` refer to roughly line 131. 
+
+You don't have to download the VGGFace Pretrained Model, since we released a L_inf model (About 150M) that we used.
 
 
 ### 3. Randomized Smoothing 
