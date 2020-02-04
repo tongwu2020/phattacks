@@ -11,7 +11,7 @@ Type 'python linf_retrain.py {}.pt  -eps 4 -alpha 1 -iters 20 -out 70 -epochs 30
 30 is epochs you want to train  
 
 Currently, the model is used to adversarial training. For curriculum adversarial training, 
-change the code in if __name__ == "__main__": refer to roughly line 126. 
+change the code in if __name__ == "__main__": refer to roughly line 131. 
 '''
 
 
