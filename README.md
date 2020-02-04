@@ -50,7 +50,7 @@ Examples of the ROA attack on face recognition, using a rectangle of size 100 ×
 
 ## Defense against Occlusion Attacks (DOA) & Results 
 
-We apply the adversarial training approach for ROA to fine tune the clean model. 
+We apply the adversarial training approach for ROA to fine tune the clean model, achieving significant improvement compared to conventional robust classifers. 
 
 
 
@@ -77,13 +77,12 @@ conda install -c conda-forge opencv
 
 3. Download our trained models from:
 
-4. Run specific task:
-For 
+4. Run specific task: for Face Recognition, 
 
 ```
 cd glass 
 ```
-or 
+or for traffic sign classification, 
 
 ```
 cd sign
