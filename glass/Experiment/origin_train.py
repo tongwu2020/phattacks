@@ -55,7 +55,7 @@ def data_process(batch_size=64):
     ]),
     }
                                 
-    data_dir = '..'   # change this if the data is in different loaction 
+    data_dir = '../Data'   # change this if the data is in different loaction 
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
                                           data_transforms[x])
                   for x in ['train', 'val','test']}

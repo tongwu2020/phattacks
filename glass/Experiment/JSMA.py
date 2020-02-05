@@ -47,7 +47,7 @@ def data_process(batch_size=64):
     ]),
     }
 								
-    data_dir = '..'   # change this 
+    data_dir = '../Data'   # change this 
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x),
                                           data_transforms[x])
                   for x in ['train', 'val','test']}

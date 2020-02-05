@@ -269,7 +269,7 @@ if __name__ == '__main__':
     
 
         print('==> Preparing data..')
-        data_dir = '..'
+        data_dir = '../Data'
         normalize = transforms.Normalize(mean=[0.367035294117647,0.41083294117647057,0.5066129411764705],
                                  std= [1/255,1/255,1/255]    )
 
