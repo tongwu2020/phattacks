@@ -1,5 +1,9 @@
 # Face Recognition 
 
+## Prepare for the experiment 
+
+Download the [Data](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) and put into 'glass' file 
+
 Go to experiment folder to run our experiment.
 ```
 cd experiment 
@@ -13,7 +17,7 @@ Unzip it and put it in this file (glass)
 python origin_train.py
 ```
 You don't have to download the VGGFace Pretrained Model, since we released a transfered model (About 150M) that we used.
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model)  to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model)  to find a trained model
 
 
 ### 2. Adversarial Training & Curriculum Adversarial Training
@@ -34,7 +38,7 @@ Currently, the model is used to adversarial training. For curriculum adversarial
 change the code in ```if __name__ == "__main__":``` refer to roughly line 131. 
 
 You don't have to download the VGGFace Pretrained Model, since we released a L_inf model (About 150M) that we used.
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model) to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
 
 
 
@@ -49,7 +53,7 @@ so type anything to fill in {}.
 (b)'out' is name of your output models (perfer a int); 
 (c)'sigma' is the sigma of gaussian noise add to original images.
 
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model) to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
 
 ### 4. Defending against Rectangular Occlusion Attacks
 ```
@@ -62,18 +66,18 @@ python sticker_retrain.py {}.pt -alpha 4 -iters 50 -out 99 -search 1 -epochs 5
 (e)'search' is method of searching, '0' is exhaustive_search, '1' is gradient_based_search";
 (f)'epochs' is the epoch you want to fine tune your network;
 
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model) to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
 
 ## Testing Models
 
-#### 1.Testing a model with original images
+### 1.Testing a model with original images
 ```
 python python origin_test {}.pt
 ```
 where {} is the name of your model want to test
 
 
-#### 2.Testing a model against L_inf & L_2 attacks
+### 2.Testing a model against L_inf & L_2 attacks
 
 Test the L_inf robustness for single model
 ```
@@ -96,7 +100,7 @@ python smooth_l2attack.py {}.pt -sigma 1 -outfile output1
 'sigma' is the sigma of gaussian noise (I use same sigma with the sigma training the gaussian model);
 'outfile' is the file name of your output file;
 
-#### 3.Testing a model against eyeglassframe attacks
+### 3.Testing a model against eyeglassframe attacks
 
 The attack is in digit space (not involved rotation and scale) (fixed eyeglass frame mask),
 and untargeted (maximize the loss of (f(x),y) )
@@ -118,7 +122,7 @@ python smooth_glassattack.py {}.pt -sigma 1 -outfile output1
 'outfile' is the file name of your output file;we have default iterations of attacks that used in experiment, which is (1, 2, 3, 5, 7, 10, 20, 50, 100, 300)
 
 
-#### 4.Testing a model against adversarial patch
+### 4.Testing a model against adversarial patch
 
 Test the robustness against adversarial patch for single model
 ```
@@ -134,7 +138,7 @@ python smooth_patch.py {}.pt -sigma 1
 {} is the name of your model want to attack.
 'sigma' is the sigma of randomized smoothing 
 
-#### 5.Testing a model against JSMA for single model
+### 5.Testing a single model against JSMA 
 
 ```
 python JSMA.py {}.pt
@@ -144,7 +148,7 @@ python JSMA.py {}.pt
 Note that the output will be accuracy when changing 10,100,1000,10000 points
 refer to line 125, print count to calculate the exact curve 
 
-#### 6.Testing a model against other physical attacks for single model
+### 6.Testing a single model against other physical attacks 
 
 ```
 python strange_retrain.py {}.pt
