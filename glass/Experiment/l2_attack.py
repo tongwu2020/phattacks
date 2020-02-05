@@ -1,6 +1,6 @@
 '''
 We use this file to test the L_2 robustness 
-Type 'python linf_attack.py {}.pt' ({} name of your model want to test) to run
+Type 'python l2_attack.py {}.pt' ({} name of your model want to test) to run
 This is based on https://adversarial-ml-tutorial.org
 '''
 

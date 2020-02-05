@@ -3,10 +3,9 @@
 
 
 '''
-Eyeglass Frame Attack 
+Other Physical Attacks
 Type 'python strange_retrain.py {}.pt'  to run 
-{} is the name of your model want to attack. Note that you cannot attack randomized smoothing in this file, 
-please use smooth_glassattack.py
+{} is the name of your model want to attack.
 itera   = [1 , 2  , 3  , 5  , 7  , 10 , 20 , 50 , 100 , 300 ] # this is default numbers we used in experiment, 
 which is the iterations of attacks 
 
