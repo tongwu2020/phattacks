@@ -1,5 +1,9 @@
 # Face Recognition 
 
+## Prepare for the experiment 
+
+Download the [Data](https://github.com/tongwu2020/phattacks/releases/tag/Face_model) and put into 'glass' file 
+
 Go to experiment folder to run our experiment.
 ```
 cd experiment 
@@ -13,7 +17,7 @@ Unzip it and put it in this file (glass)
 python origin_train.py
 ```
 You don't have to download the VGGFace Pretrained Model, since we released a transfered model (About 150M) that we used.
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model)  to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_model)  to find a trained model
 
 
 ### 2. Adversarial Training & Curriculum Adversarial Training
@@ -34,7 +38,7 @@ Currently, the model is used to adversarial training. For curriculum adversarial
 change the code in ```if __name__ == "__main__":``` refer to roughly line 131. 
 
 You don't have to download the VGGFace Pretrained Model, since we released a L_inf model (About 150M) that we used.
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model) to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_model) to find a trained model
 
 
 
@@ -49,7 +53,7 @@ so type anything to fill in {}.
 (b)'out' is name of your output models (perfer a int); 
 (c)'sigma' is the sigma of gaussian noise add to original images.
 
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model) to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_model) to find a trained model
 
 ### 4. Defending against Rectangular Occlusion Attacks
 ```
@@ -62,7 +66,7 @@ python sticker_retrain.py {}.pt -alpha 4 -iters 50 -out 99 -search 1 -epochs 5
 (e)'search' is method of searching, '0' is exhaustive_search, '1' is gradient_based_search";
 (f)'epochs' is the epoch you want to fine tune your network;
 
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_Ori_model) to find a trained model
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_model) to find a trained model
 
 ## Testing Models
 
