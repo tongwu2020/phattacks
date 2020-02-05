@@ -138,7 +138,7 @@ python smooth_patch.py {}.pt -sigma 1
 {} is the name of your model want to attack.
 'sigma' is the sigma of randomized smoothing 
 
-### 5.Testing a model against JSMA for single model
+### 5.Testing a single model against JSMA 
 
 ```
 python JSMA.py {}.pt
@@ -148,7 +148,7 @@ python JSMA.py {}.pt
 Note that the output will be accuracy when changing 10,100,1000,10000 points
 refer to line 125, print count to calculate the exact curve 
 
-### 6.Testing a model against other physical attacks for single model
+### 6.Testing a single model against other physical attacks 
 
 ```
 python strange_retrain.py {}.pt
