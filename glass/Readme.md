@@ -70,14 +70,14 @@ See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Face_model) to
 
 ## Testing Models
 
-#### 1.Testing a model with original images
+### 1.Testing a model with original images
 ```
 python python origin_test {}.pt
 ```
 where {} is the name of your model want to test
 
 
-#### 2.Testing a model against L_inf & L_2 attacks
+### 2.Testing a model against L_inf & L_2 attacks
 
 Test the L_inf robustness for single model
 ```
@@ -100,7 +100,7 @@ python smooth_l2attack.py {}.pt -sigma 1 -outfile output1
 'sigma' is the sigma of gaussian noise (I use same sigma with the sigma training the gaussian model);
 'outfile' is the file name of your output file;
 
-#### 3.Testing a model against eyeglassframe attacks
+### 3.Testing a model against eyeglassframe attacks
 
 The attack is in digit space (not involved rotation and scale) (fixed eyeglass frame mask),
 and untargeted (maximize the loss of (f(x),y) )
@@ -122,7 +122,7 @@ python smooth_glassattack.py {}.pt -sigma 1 -outfile output1
 'outfile' is the file name of your output file;we have default iterations of attacks that used in experiment, which is (1, 2, 3, 5, 7, 10, 20, 50, 100, 300)
 
 
-#### 4.Testing a model against adversarial patch
+### 4.Testing a model against adversarial patch
 
 Test the robustness against adversarial patch for single model
 ```
@@ -138,7 +138,7 @@ python smooth_patch.py {}.pt -sigma 1
 {} is the name of your model want to attack.
 'sigma' is the sigma of randomized smoothing 
 
-#### 5.Testing a model against JSMA for single model
+### 5.Testing a model against JSMA for single model
 
 ```
 python JSMA.py {}.pt
@@ -148,7 +148,7 @@ python JSMA.py {}.pt
 Note that the output will be accuracy when changing 10,100,1000,10000 points
 refer to line 125, print count to calculate the exact curve 
 
-#### 6.Testing a model against other physical attacks for single model
+### 6.Testing a model against other physical attacks for single model
 
 ```
 python strange_retrain.py {}.pt
