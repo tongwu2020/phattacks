@@ -5,7 +5,7 @@
 We use this file to train the clean model to classify the images.
 We do not tune a lot of hyperparmeters, all default hyperparameters showed below.
 We obtain more than 98% of accuracy
-type 'python origin_train.py', to run the model the output model is named new_ori_model.pt
+type 'python train_model.py', to run the model the output model is named new_ori_model.pt
 
 '''
 
