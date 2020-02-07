@@ -87,17 +87,4 @@ or for traffic sign classification,
 cd sign
 ```
 
-## Cite our Paper 
-
-@inproceedings{
-wu2020defending,
-title={Defending Against Physically Realizable Attacks on Image Classification},
-author={Tong Wu and Liang Tong and Yevgeniy Vorobeychik},
-booktitle={International Conference on Learning Representations},
-year={2020},
-url={https://openreview.net/forum?id=H1xscnEKDr}
-}
-
-
-
 Contact [tongwu@wustl.edu]() with any questions. 
