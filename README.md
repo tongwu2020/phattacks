@@ -1,6 +1,8 @@
 
 # Defending Against Physically Realizable Attacks on Image Classification
 
+In Proceedings of the 8th International Conference on Learning Representations (ICLR’20)
+
 ### [Tong Wu](https://tongwu2020.github.io/tongwu/), [Liang Tong](https://liang-tong.me), [Yevgeniy Vorobeychik](http://vorobeychik.com)
 #### Washington University in St. Louis
  
