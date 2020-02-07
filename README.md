@@ -72,11 +72,12 @@ git clone https://github.com/tongwu2020/phattacks.git
 conda create -n phattack
 conda activate phattack
 # Install following packages:
-# See https://pytorch.org/ for the command for your system to install correct version of Pytorch 
 conda install scipy pandas statsmodels matplotlib seaborn numpy 
 conda install -c conda-forge opencv
-# May need more packages 
+pip install foolbox==2.3.0
 ```
+See [Pytorch](https://pytorch.org/) for the command for your system to install correct version of Pytorch 
+May need more packages
 
 3. Run specific task: for Face Recognition, 
 
@@ -87,6 +88,11 @@ or for traffic sign classification,
 
 ```
 cd sign
+```
+
+## Try ROA in your own dataset 
+```
+cd ROA
 ```
 
 Contact [tongwu@wustl.edu]() with any questions. 
