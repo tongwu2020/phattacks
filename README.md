@@ -76,9 +76,7 @@ conda install -c conda-forge opencv
 # May need more packages 
 ```
 
-3. Download our trained models from:
-
-4. Run specific task: for Face Recognition, 
+3. Run specific task: for Face Recognition, 
 
 ```
 cd glass 
@@ -88,8 +86,5 @@ or for traffic sign classification,
 ```
 cd sign
 ```
-
-
-
 
 Contact [tongwu@wustl.edu]() with any questions. 
