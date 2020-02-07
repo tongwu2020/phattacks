@@ -12,6 +12,8 @@ which is the iterations of attacks
 
 Note that the attack is in digit space (not involved rotation and scale) (fixed eyeglass frame mask),
 and untargeted (maximize the loss of (f(x),y) )
+sticker attack: mask_l1loss_uniform_rectangles.png
+other attacks: maskdone4.jpg maskdone5.jpg maskdone6.jpg   
 '''
 
 import torch
@@ -39,7 +41,7 @@ def untarget_attack(model, X, y, lamb, num_iter=100):
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     
-    sticker = cv2.imread('../mask/maskdone4.jpg')
+    sticker = cv2.imread('../mask/mask_l1loss_uniform_rectangles.png')
     # maskdone4.jpg maskdone5.jpg maskdone6.jpg   mask_l1loss_uniform_rectangles.png
     sticker = transforms.ToTensor()(sticker)
     sticker = sticker.to(device)

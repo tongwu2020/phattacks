@@ -1,6 +1,6 @@
 '''
 We use this file to test the clean accuracy.
-Type 'python origin_test {}.pt '  ({} name of your model want to test) to run
+Type 'python test_model.py {}.pt '  ({} name of your model want to test) to run
 '''
 
 import torch
