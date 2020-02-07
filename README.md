@@ -90,7 +90,7 @@ or for traffic sign classification,
 cd sign
 ```
 
-## Try ROA in your own dataset 
+## Try DOA in your own dataset 
 ```
 cd ROA
 ```
