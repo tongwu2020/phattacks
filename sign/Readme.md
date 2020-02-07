@@ -127,7 +127,7 @@ which is the iterations of attacks
 
 ### 4.Testing a model against adversarial patch
 
-Test the robustness against adversarial patch for single model. The attack is learned from 15 images, each classes have 1 images.
+Test the robustness against adversarial patch for single model. The attack is learned from 15 images, each class have 1 images. Choose the dataset by your own, pick 15 images, each class (expect stop sign) have 1 images. Put it in 'LISA/Train'.
 ```
 python make_patch.py {}.pt
 ```
