@@ -2,7 +2,7 @@
 
 ## Prepare for the experiment 
 
-Download the [Data](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) and put into 'glass' file 
+Download the [Data](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) and put into 'sign' file 
 
 Go to experiment folder to run our experiment.
 ```
@@ -10,13 +10,14 @@ cd experiment
 ```
 ## Training Models
 
+If you don't want to train the model by yourself; 
+see [Models](https://github.com/tongwu2020/phattacks/tree/master/sign/donemodel) to find a trained model
+
 ### 1. Training CNN with original images 
 
 ```
-python origin_train.py
+python train_model.py
 ```
-If you don't want to train the model by yourself; 
-see [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
 
 
 ### 2. Adversarial Training & Curriculum Adversarial Training
@@ -24,54 +25,48 @@ see [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) 
 #### L_inf adversarial training 
 
 ```
-python linf_retrain.py {}.pt  -eps 4 -alpha 1 -iters 20 -out 70 -epochs 30
+python linf_retrain.py {}.pt 
 ```
-(a){} name of your model want to retrain (only for curriculum adversarial training), if doing adversarial training, fill in anything you want to run.
-(b)'eps' is the epsilon of l_infty bound;
-(c)'alpha' is the learning rate of PGD;
-(d)'iters' is the iterations of PGD; 
-(e)'out' is name of your output models; 
-(f)'epochs' is epochs you want to train; 
+{} name of your model want to retrain, if doing adversarial training, fill in anything you want to run; 
+change the hyper-parameter inside the file.
 
 Currently, the model is used to adversarial training. For curriculum adversarial training, 
-change the code in ```if __name__ == "__main__":``` refer to roughly line 131. 
-
-You don't have to download the VGGFace Pretrained Model, since we released a L_inf model (About 150M) that we used.
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
-
+change the code in if __name__ == "__main__": refer to roughly line 117. 
 
 
 ### 3. Randomized Smoothing 
 
 #### Training the model with Guassian noise
 ```
-python linf_retrain.py {}.pt -out 70 -sigma 1
+python gaussian_train.py {}.pt 
 ```
-(a){} name of your model want to train from a clean model, right now it is training from pretrain weight,
-so type anything to fill in {}.
-(b)'out' is name of your output models (perfer a int); 
-(c)'sigma' is the sigma of gaussian noise add to original images.
 
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
+(a) {} name of your model want to train from a clean model, right now it is training from xavier_uniform initial weight,
+so type something to fill in {}; 
+(b) name of your output models can be changed;
+(c) sigma of gaussian can be changed; 
+(d) other hyperparameter is defult, like epochs and learning rate
+
 
 ### 4. Defending against Rectangular Occlusion Attacks
 ```
-python sticker_retrain.py {}.pt -alpha 4 -iters 50 -out 99 -search 1 -epochs 5
+python sticker_retrain.py {}.pt -alpha 0.01 -iters 30 -out 99 -search 1 -epochs 5
 ```
-(a){}.pt is the name of original model you want to train with DOA, you can use our model (new_ori_model.pt);
-(b)'alpha' is learning rate of PGD;
-(c)'iters' is the iterations of PGD;
-(d)'out' is name of your final model;
-(e)'search' is method of searching, '0' is exhaustive_search, '1' is gradient_based_search";
-(f)'epochs' is the epoch you want to fine tune your network;
+(a) {}.pt is the name of model you want to train with DOA ;
+(b) alpha is learning rate of PGD e.g. 0.01;
+(c) iters is the iterations of PGD e.g.30;
+(d) out is name of your final model e.g.99;
+(e) search is method of searching, '0' is exhaustive_search, '1' is gradient_based_search";
+(f) epochs is the epoch you want to fine tune your network e.g. 5;
 
-See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
+Note that ROA is a abstract attacking model simulate the "physical" attacks
+Thus there is no restriction for the mask to be rectangle
 
 ## Testing Models
 
 ### 1.Testing a model with original images
 ```
-python python origin_test {}.pt
+python test_model.py {}.pt
 ```
 where {} is the name of your model want to test
 
@@ -93,20 +88,21 @@ Note that you cannot attack randomized smoothing using those following commands,
 
 Test the L_2 robustness for randomized smoothing 
 ```
-python smooth_l2attack.py {}.pt -sigma 1 -outfile output1
+python smooth_l2attack.py {}.pt -sigma 1
 ```
-{}.pt is the name of gaussian model you need to train by gaussian_train.py;
-'sigma' is the sigma of gaussian noise (I use same sigma with the sigma training the gaussian model);
-'outfile' is the file name of your output file;
 
-### 3.Testing a model against eyeglassframe attacks
+(a) {}.pt is the name of gaussian model you need to train by gaussian_train.py
+(b) is sigma of gaussian noise (I use same sigma with the sigma training the gaussian model)
+
+
+### 3.Testing a model against physically realizable attacks (stickers)
 
 The attack is in digit space (not involved rotation and scale) (fixed eyeglass frame mask),
 and untargeted (maximize the loss of (f(x),y) )
 
 Test the robustness against eyeglassframe attacks for single model
 ```
-python linf_attack.py {}.pt
+python physical_attack.py {}.pt
 ```
 {} is the name of your model want to attack. Note that you cannot attack randomized smoothing in this file, 
 please use smooth_glassattack.py;
