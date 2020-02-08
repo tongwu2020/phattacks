@@ -60,6 +60,16 @@ We apply the adversarial training approach for ROA to fine tune the clean model,
 <img src="Figure/Comshapeexh_glassAtt.png" height="288" width="396" />
 </div>
 
+
+Effectiveness of DOA on face recognition against eyeglass frame attacks.
+
+(a) Left image: Performance of DOA (using the 100 * 50 rectangle) against the eyeglass frame attack in
+comparison with conventional methods. Comparison between DOA, adversarial training, and
+randomized smoothing (using the most robust variants of these).
+
+(b) Right image:Comparing DOA
+performance for different rectangle dimensions and numbers of PGD iterations inside the rectangle.
+
 ## Prepare for the experiment 
 1. Clone this repository: 
 ```
