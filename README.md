@@ -55,13 +55,10 @@ Examples of the ROA attack on face recognition, using a rectangle of size 100 ×
 
 We apply the adversarial training approach for ROA to fine tune the clean model, achieving significant improvement compared to conventional robust classifers. 
 
-<div >
-<img src="Figure/Main_glassAll.pdf" height="288" width="396">
-<img src="Figure/Comshapeexh_glassAtt.pdf" height="288" width="396">
+<div>
+<img src="Figure/Main_glassAll.png" height="288" width="396" />
+<img src="Figure/Comshapeexh_glassAtt.png" height="288" width="396" />
 </div>
-
-
-
 
 ## Prepare for the experiment 
 1. Clone this repository: 
