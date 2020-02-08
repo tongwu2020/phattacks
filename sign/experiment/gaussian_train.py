@@ -3,7 +3,7 @@
 
 '''
 We use this file to do the gausian training in order to do Randomized smoothing 
-Type 'python linf_retrain.py {}.pt ' to run
+Type 'python gaussian_train.py {}.pt ' to run
 {} name of your model want to train from a clean model, right now it is training from xavier_uniform initial weight,
 so type something to fill in {}
 name of your output models can be changed 
