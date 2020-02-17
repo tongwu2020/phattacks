@@ -68,6 +68,22 @@ python sticker_retrain.py {}.pt -alpha 4 -iters 50 -out 99 -search 1 -epochs 5
 
 See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
 
+### 5. Defending against Circle Occlusion Attacks
+This is our additional results for training with circle occlusion attacks 
+```
+python Oshape_retrain.py {}.pt -alpha 4 -iters 50 -out 101 -search 1 -epochs 5
+```
+(a){}.pt is the name of original model you want to train with COA, you can use our model (new_ori_model.pt);
+(b)'alpha' is learning rate of PGD;
+(c)'iters' is the iterations of PGD;
+(d)'out' is name of your final model;
+(e)'search' is method of searching, '0' is exhaustive_search, '1' is gradient_based_search";
+(f)'epochs' is the epoch you want to fine tune your network;
+
+See [Models](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) to find a trained model
+
+
+
 ## Testing Models
 
 ### 1.Testing a model with original images
