@@ -154,13 +154,11 @@ class ROA(object):
         X1 = torch.rand_like(X, requires_grad=True).to(y.device)
         X1.data = X.detach()*(1-sticker)+((delta.detach()-mean)*sticker)
 
-        eps = torch.zeros_like(X)
         
         for t in range(num_iter):
             loss = nn.CrossEntropyLoss()(model(X1), y)
             loss.backward()
-            eps.data = (eps.detach() + 0.5 * X1.grad.detach().sign()).clamp(-2,2)
-            X1.data = (X.detach() + eps.detach())*(1-sticker) + X1.detach()*sticker
+   
             X1.data = (X1.detach() + alpha*X1.grad.detach().sign()*sticker)
             X1.data = ((X1.detach() + mean).clamp(0,255)-mean)
             X1.grad.zero_()
