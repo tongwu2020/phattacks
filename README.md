@@ -1,4 +1,7 @@
 
+### Updates:
+We upload the doa models, which can be founded at  [MNIST](https://github.com/tongwu2020/phattacks/tree/master/mnist/model), [Cifar10](https://github.com/tongwu2020/phattacks/tree/master/cifar). These models can be used as baseline model to defend against any patch attacks (Physically Realizable Attacks).
+
 # Defending Against Physically Realizable Attacks on Image Classification
 
 In Proceedings of the 8th International Conference on Learning Representations (ICLR’20)
