@@ -1,0 +1,49 @@
+#BSUB -G SEAS-Lab-Vorobeychik
+#BSUB -o /home/research/tongwu/roa/mnist/output/modelroa_ori.txt
+#BSUB -R "select[type==any]"
+#BSUB -gpu "num=1:mode=exclusive_process:gmodel=GeForceGTX1080Ti"
+#BSUB -N
+#BSUB -J PythonGPUJob
+python mnist_roa.py --modelname doa3by3ori30 --ROAwidth 3 --ROAheight 3 --epochs 30 --inputmodel doa_ori
+python mnist_roa.py --modelname doa5by5ori30 --ROAwidth 5 --ROAheight 5 --epochs 30 --inputmodel doa_ori
+python mnist_roa.py --modelname doa7by7ori30 --ROAwidth 7 --ROAheight 7 --epochs 30 --inputmodel doa_ori
+python mnist_roa.py --modelname doa9by9ori30 --ROAwidth 9 --ROAheight 9 --epochs 30 --inputmodel doa_ori
+python mnist_roa.py --modelname doa11by11ori30 --ROAwidth 11 --ROAheight 11 --epochs 30 --inputmodel doa_ori
+
+
+#BSUB -G SEAS-Lab-Vorobeychik
+#BSUB -o /home/research/tongwu/roa/mnist/output/modelroa_attack.txt
+#BSUB -R "select[type==any]"
+#BSUB -gpu "num=1:mode=exclusive_process:gmodel=GeForceGTX1080Ti"
+#BSUB -N
+#BSUB -J PythonGPUJob
+python attack.py --attackmodel doa_ori  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa_ori  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa_ori  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa_ori  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa_ori  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa3by3  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa3by3  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa3by3  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa3by3  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa3by3  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa5by5  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa5by5  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa5by5  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa5by5  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa5by5  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa7by7  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa7by7  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa7by7  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa7by7  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa7by7  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa9by9  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa9by9  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa9by9  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa9by9  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa9by9  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa11by11  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa11by11  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa11by11  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa11by11  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa11by11  --ROAwidth 11 --ROAheight 11 

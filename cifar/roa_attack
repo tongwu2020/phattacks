@@ -1,0 +1,36 @@
+#BSUB -G SEAS-Lab-Vorobeychik
+#BSUB -o /home/research/tongwu/roa/cifar/out/modelroa_attack.txt
+#BSUB -R "select[type==any]"
+#BSUB -gpu "num=1:mode=exclusive_process:gmodel=GeForceGTX1080Ti"
+#BSUB -N
+#BSUB -J PythonGPUJob
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./ori200/checkpoint.pth.tar --ROAwidth 3 --ROAheight 3 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./ori200/checkpoint.pth.tar --ROAwidth 5 --ROAheight 5
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./ori200/checkpoint.pth.tar --ROAwidth 7 --ROAheight 7 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./ori200/checkpoint.pth.tar --ROAwidth 9 --ROAheight 9 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./ori200/checkpoint.pth.tar --ROAwidth 11 --ROAheight 11 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa3by3fine30/checkpoint.pth.tar --ROAwidth 3 --ROAheight 3 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa3by3fine30/checkpoint.pth.tar --ROAwidth 5 --ROAheight 5
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa3by3fine30/checkpoint.pth.tar --ROAwidth 7 --ROAheight 7 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa3by3fine30/checkpoint.pth.tar --ROAwidth 9 --ROAheight 9 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa3by3fine30/checkpoint.pth.tar --ROAwidth 11 --ROAheight 11 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa5by5fine30/checkpoint.pth.tar --ROAwidth 3 --ROAheight 3 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa5by5fine30/checkpoint.pth.tar --ROAwidth 5 --ROAheight 5
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa5by5fine30/checkpoint.pth.tar --ROAwidth 7 --ROAheight 7 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa5by5fine30/checkpoint.pth.tar --ROAwidth 9 --ROAheight 9 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa5by5fine30/checkpoint.pth.tar --ROAwidth 11 --ROAheight 11 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa7by7fine30/checkpoint.pth.tar --ROAwidth 3 --ROAheight 3 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa7by7fine30/checkpoint.pth.tar --ROAwidth 5 --ROAheight 5
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa7by7fine30/checkpoint.pth.tar --ROAwidth 7 --ROAheight 7 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa7by7fine30/checkpoint.pth.tar --ROAwidth 9 --ROAheight 9 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa7by7fine30/checkpoint.pth.tar --ROAwidth 11 --ROAheight 11 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa9by9fine30/checkpoint.pth.tar --ROAwidth 3 --ROAheight 3 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa9by9fine30/checkpoint.pth.tar --ROAwidth 5 --ROAheight 5
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa9by9fine30/checkpoint.pth.tar --ROAwidth 7 --ROAheight 7 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa9by9fine30/checkpoint.pth.tar --ROAwidth 9 --ROAheight 9 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa9by9fine30/checkpoint.pth.tar --ROAwidth 11 --ROAheight 11 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa11by11fine30/checkpoint.pth.tar --ROAwidth 3 --ROAheight 3 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa11by11fine30/checkpoint.pth.tar --ROAwidth 5 --ROAheight 5
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa11by11fine30/checkpoint.pth.tar --ROAwidth 7 --ROAheight 7 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa11by11fine30/checkpoint.pth.tar --ROAwidth 9 --ROAheight 9 
+python attack.py cifar10 cifar_resnet110 attack --base_classifier ./roa11by11fine30/checkpoint.pth.tar --ROAwidth 11 --ROAheight 11 

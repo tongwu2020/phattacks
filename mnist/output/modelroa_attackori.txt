@@ -1,0 +1,175 @@
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   91.21000 %
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   61.01000 %
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   14.11000 %
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:    0.75000 %
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:    0.00000 %
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa3by3ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   89.59000 %
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   78.02000 %
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   40.49000 %
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:    4.61000 %
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:    0.01000 %
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa5by5ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   83.83000 %
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   76.16000 %
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   61.30000 %
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   19.50000 %
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:    1.39000 %
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa7by7ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   76.40000 %
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   68.72000 %
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   59.96000 %
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   43.33000 %
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   12.54000 %
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa9by9ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   70.03000 %
+Namespace(ROAheight=3, ROAwidth=3, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   62.20000 %
+Namespace(ROAheight=5, ROAwidth=5, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   52.42000 %
+Namespace(ROAheight=7, ROAwidth=7, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   42.93000 %
+Namespace(ROAheight=9, ROAwidth=9, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)
+Number of images in training set: 60000
+Number of images in test set: 10000
+Number of batches in the train loader: 469
+Number of batches in the test loader: 79
+Accuracy of the network on the 10000 test images:   27.17000 %
+Namespace(ROAheight=11, ROAwidth=11, attackmodel='doa11by11ori', attiters=150, attlr=0.01, batch_size=128, potential_nums=50, restart=10, skip_in_x=1, skip_in_y=1)

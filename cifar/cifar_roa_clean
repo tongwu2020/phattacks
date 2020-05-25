@@ -1,0 +1,12 @@
+#BSUB -G SEAS-Lab-Vorobeychik
+#BSUB -o /home/research/tongwu/roa/cifar/out/modelroa.txt
+#BSUB -R "select[type==any]"
+#BSUB -gpu "num=1:mode=exclusive_process:gmodel=GeForceGTX1080Ti"
+#BSUB -N
+#BSUB -J PythonGPUJob
+python cifar_roa.py cifar10 cifar_resnet110 roa3by3 --ROAwidth 3 --ROAheight 3 --lr 0.01
+python cifar_roa.py cifar10 cifar_resnet110 roa5by5 --ROAwidth 5 --ROAheight 5 --lr 0.01
+python cifar_roa.py cifar10 cifar_resnet110 roa7by7 --ROAwidth 7 --ROAheight 7 --lr 0.01
+python cifar_roa.py cifar10 cifar_resnet110 roa9by9  --ROAwidth 9 --ROAheight 9 --lr 0.01
+python cifar_roa.py cifar10 cifar_resnet110 roa11by11  --ROAwidth 11 --ROAheight 11 --lr 0.01
+

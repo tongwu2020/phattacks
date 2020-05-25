@@ -1,0 +1,61 @@
+
+Namespace(ROAheight=3, ROAwidth=3, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./ori200/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   46.00000 %
+Namespace(ROAheight=5, ROAwidth=5, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./ori200/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   19.73000 %
+Namespace(ROAheight=7, ROAwidth=7, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./ori200/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:    5.41000 %
+Namespace(ROAheight=9, ROAwidth=9, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./ori200/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:    1.02000 %
+Namespace(ROAheight=11, ROAwidth=11, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./ori200/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:    0.04000 %
+Namespace(ROAheight=3, ROAwidth=3, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa3by3fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   80.93000 %
+Namespace(ROAheight=5, ROAwidth=5, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa3by3fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   63.62000 %
+Namespace(ROAheight=7, ROAwidth=7, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa3by3fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   32.08000 %
+Namespace(ROAheight=9, ROAwidth=9, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa3by3fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:    9.70000 %
+Namespace(ROAheight=11, ROAwidth=11, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa3by3fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:    1.64000 %
+Namespace(ROAheight=3, ROAwidth=3, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa5by5fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   79.18000 %
+Namespace(ROAheight=5, ROAwidth=5, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa5by5fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   80.01000 %
+Namespace(ROAheight=7, ROAwidth=7, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa5by5fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   70.17000 %
+Namespace(ROAheight=9, ROAwidth=9, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa5by5fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   51.62000 %
+Namespace(ROAheight=11, ROAwidth=11, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa5by5fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   34.39000 %
+Namespace(ROAheight=3, ROAwidth=3, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa7by7fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   75.38000 %
+Namespace(ROAheight=5, ROAwidth=5, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa7by7fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   77.01000 %
+Namespace(ROAheight=7, ROAwidth=7, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa7by7fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   77.19000 %
+Namespace(ROAheight=9, ROAwidth=9, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa7by7fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   67.18000 %
+Namespace(ROAheight=11, ROAwidth=11, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa7by7fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   53.28000 %
+Namespace(ROAheight=3, ROAwidth=3, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa9by9fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   75.81000 %
+Namespace(ROAheight=5, ROAwidth=5, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa9by9fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   76.25000 %
+Namespace(ROAheight=7, ROAwidth=7, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa9by9fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   76.93000 %
+Namespace(ROAheight=9, ROAwidth=9, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa9by9fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   74.12000 %
+Namespace(ROAheight=11, ROAwidth=11, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa9by9fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   68.96000 %
+Namespace(ROAheight=3, ROAwidth=3, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa11by11fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   75.48000 %
+Namespace(ROAheight=5, ROAwidth=5, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa11by11fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   76.05000 %
+Namespace(ROAheight=7, ROAwidth=7, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa11by11fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   76.24000 %
+Namespace(ROAheight=9, ROAwidth=9, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa11by11fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   73.89000 %
+Namespace(ROAheight=11, ROAwidth=11, arch='cifar_resnet110', attiters=150, attlr=0.05, base_classifier='./roa11by11fine30/checkpoint.pth.tar', batch=512, dataset='cifar10', outdir='attack', potential_nums=50, print_freq=1, skip_in_x=1, skip_in_y=1)
+Accuracy of the network on the 10000 test images:   70.04000 %

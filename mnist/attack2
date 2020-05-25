@@ -1,0 +1,31 @@
+#BSUB -G SEAS-Lab-Vorobeychik
+#BSUB -o /home/research/tongwu/roa/mnist/output/modelroa_attackori.txt
+#BSUB -R "select[type==any]"
+#BSUB -gpu "num=1:mode=exclusive_process:gmodel=GeForceGTX1080Ti"
+#BSUB -N
+#BSUB -J PythonGPUJob
+python attack.py --attackmodel doa3by3ori  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa3by3ori  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa3by3ori  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa3by3ori  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa3by3ori  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa5by5ori  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa5by5ori  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa5by5ori  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa5by5ori  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa5by5ori  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa7by7ori  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa7by7ori  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa7by7ori  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa7by7ori  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa7by7ori  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa9by9ori  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa9by9ori  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa9by9ori  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa9by9ori  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa9by9ori  --ROAwidth 11 --ROAheight 11 
+python attack.py --attackmodel doa11by11ori  --ROAwidth 3 --ROAheight 3 
+python attack.py --attackmodel doa11by11ori  --ROAwidth 5 --ROAheight 5
+python attack.py --attackmodel doa11by11ori  --ROAwidth 7 --ROAheight 7 
+python attack.py --attackmodel doa11by11ori  --ROAwidth 9 --ROAheight 9 
+python attack.py --attackmodel doa11by11ori  --ROAwidth 11 --ROAheight 11 
