@@ -1,4 +1,4 @@
-epoch	time	lr	train loss	train acc	testloss	test acc
+epoch	time	lr	train loss	train acc	advtestloss	advtest acc
 0	0:3	0.01	2.3	38.8	1.2	56.3
 1	0:3	0.01	1.06	61.0	0.951	66.3
 2	0:3	0.01	0.87	68.1	0.857	70.3
