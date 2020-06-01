@@ -1,9 +1,4 @@
-#BSUB -G SEAS-Lab-Vorobeychik
-#BSUB -o /home/research/tongwu/roa/mnist/output/modelroa.txt
-#BSUB -R "select[type==any]"
-#BSUB -gpu "num=1:mode=exclusive_process:gmodel=GeForceGTX1080Ti"
-#BSUB -N
-#BSUB -J PythonGPUJob
+
 python mnist_roa.py --modelname doa3by3 --ROAwidth 3 --ROAheight 3 
 python mnist_roa.py --modelname doa5by5 --ROAwidth 5 --ROAheight 5
 python mnist_roa.py --modelname doa7by7 --ROAwidth 7 --ROAheight 7 

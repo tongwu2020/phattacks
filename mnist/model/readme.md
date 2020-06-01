@@ -2,4 +2,4 @@
 
 Some results of MNIST 
 
-<img src="Figure/phattack.png" height="130" width="860">
+<img src="../../Figure/MNISTres.png" height="130" width="860">
