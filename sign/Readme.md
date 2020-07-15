@@ -1,5 +1,8 @@
 # Traffic Sign Classification
 
+### Notes:
+Some results in this data are inconsistent, please use different random seeds and do mutliple tests (Please report what you get in the code). 
+
 ## Prepare for the experiment 
 
 Download the [Data](https://github.com/tongwu2020/phattacks/releases/tag/Data%26Model) and put into 'sign' file 
@@ -111,6 +114,7 @@ please use smooth_glassattack.py.
 
 iterations = [10,100,1000] # this is default numbers we used in experiment, 
 which is the iterations of attacks.
+
 
 Test the robustness against physically realizable attacks for randomized smoothing
 ```
