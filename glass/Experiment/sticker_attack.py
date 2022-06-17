@@ -139,7 +139,7 @@ class ROA(object):
         model.eval()
         alpha = self.alpha
         num_iter = self.iters
-        sticker = torch.zeros(X.shape, requires_grad=True)
+        sticker = torch.zeros(X.shape, requires_grad=False)
         for num,ii in enumerate(out_i):
             j = int(out_j[num].item())
             i = int(ii.item())
